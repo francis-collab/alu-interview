@@ -1,18 +1,19 @@
 #!/usr/bin/python3
-"""Calculate the amount of rain that will be captured after it rains
-"""
+"""Calculate the amount of rain that will be captured after it rains."""
 
 
 def rain(walls):
-    
+    """Determine how much rainwater can be trapped between walls."""
     if not walls or len(walls) < 3:
         return 0
 
-    rain = 0
+    total_rain = 0
     for i in range(1, len(walls) - 1):
-        left = max(walls[:i])
-        right = max(walls[i + 1:])
-        min_wall = min(left, right)
+        left_max = max(walls[:i])
+        right_max = max(walls[i + 1:])
+        min_wall = min(left_max, right_max)
+
         if walls[i] < min_wall:
-            rain += min_wall - walls[i]
-    return rain
+            total_rain += min_wall - walls[i]
+
+    return total_rain
